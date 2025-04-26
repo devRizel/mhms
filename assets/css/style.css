@@ -1,0 +1,185 @@
+
+.sidebar {
+position: fixed;
+inset: 0 0 0 auto;
+width: 16rem; /* 64 */
+background: white;
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+z-index: 10;
+transition: all 0.3s ease;
+overflow: hidden;
+}
+
+.dark .sidebar {
+background: #1f2937; /* gray-800 */
+}
+
+/* Collapsed State */
+.sidebar-collapsed {
+width: 5rem !important; /* Force this width */
+}
+
+.sidebar-collapsed .nav-text {
+display: none;
+}
+
+.sidebar-collapsed .flex.items-center.justify-center {
+justify-content: center;
+padding-left: 0;
+padding-right: 0;
+}
+
+.sidebar-collapsed .flex.items-center.justify-center h1 {
+display: none;
+}
+
+/* Main Content Adjustment */
+.main-content {
+transition: margin-left 0.3s ease;
+margin-left: 16rem; /* Matches sidebar width */
+}
+
+.sidebar-collapsed + .main-content {
+margin-left: 5rem !important; /* Matches collapsed sidebar width */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+.sidebar {
+transform: translateX(-100%);
+}
+
+.sidebar.sidebar-open {
+transform: translateX(0);
+}
+
+.main-content {
+margin-left: 0 !important;
+}
+}
+/* Branding Shapes - Increased Size and Visibility */
+.brand-circle {
+position: fixed;
+width: 800px;  /* Increased from 600px */
+height: 800px; /* Increased from 600px */
+background: rgba(59, 130, 246, 0.08); /* Increased opacity from 0.05 */
+border-radius: 50%;
+clip-path: circle(50% at 50% 50%);
+z-index: -1;
+transition: all 0.3s ease;
+filter: blur(30px); /* Soften edges for smoother appearance */
+}
+
+.brand-circle-top {
+top: -400px; /* Adjusted for new size */
+left: -400px; /* Adjusted for new size */
+}
+
+.brand-circle-bottom {
+bottom: -400px; /* Adjusted for new size */
+right: -400px; /* Adjusted for new size */
+}
+
+.brand-accent {
+position: fixed;
+width: 400px;  /* Increased from 300px */
+height: 400px; /* Increased from 300px */
+background: rgba(16, 185, 129, 0.08); /* Increased opacity from 0.05 */
+border-radius: 50%;
+clip-path: circle(50% at 50% 50%);
+z-index: -1;
+transition: all 0.3s ease;
+filter: blur(20px); /* Soften edges */
+}
+
+.brand-accent-top {
+top: 200px; /* Adjusted for new size */
+left: 200px; /* Adjusted for new size */
+}
+
+.brand-accent-bottom {
+bottom: 200px; /* Adjusted for new size */
+right: 200px; /* Adjusted for new size */
+}
+
+/* Dark mode styles - More visible */
+.dark .brand-circle {
+background: rgba(59, 130, 246, 0.12); /* More visible in dark mode */
+}
+
+.dark .brand-accent {
+background: rgba(16, 185, 129, 0.12); /* More visible in dark mode */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+.brand-circle {
+width: 600px;  /* Increased from 400px */
+height: 600px; /* Increased from 400px */
+}
+
+.brand-circle-top {
+top: -300px; /* Adjusted */
+left: -300px; /* Adjusted */
+}
+
+.brand-circle-bottom {
+bottom: -300px; /* Adjusted */
+right: -300px; /* Adjusted */
+}
+
+.brand-accent {
+width: 300px;  /* Increased from 200px */
+height: 300px; /* Increased from 200px */
+}
+
+.brand-accent-top {
+top: 150px; /* Adjusted */
+left: 150px; /* Adjusted */
+}
+
+.brand-accent-bottom {
+bottom: 150px; /* Adjusted */
+right: 150px; /* Adjusted */
+}
+}
+
+@media (max-width: 768px) {
+.brand-circle {
+width: 500px;
+height: 500px;
+opacity: 0.6; /* More visible on mobile */
+}
+
+.brand-circle-top {
+top: -250px;
+left: -250px;
+}
+
+.brand-circle-bottom {
+bottom: -250px;
+right: -250px;
+}
+
+.brand-accent {
+width: 250px;
+height: 250px;
+opacity: 0.6; /* More visible on mobile */
+}
+
+.brand-accent-top {
+top: 125px;
+left: 125px;
+}
+
+.brand-accent-bottom {
+bottom: 125px;
+right: 125px;
+}
+}
+
+@media (max-width: 480px) {
+.brand-circle, .brand-accent {
+opacity: 0.4; /* Still visible but not overwhelming */
+}
+}
