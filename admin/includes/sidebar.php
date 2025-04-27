@@ -9,7 +9,7 @@ if (!isset($_SESSION['admin_id'])) {
     header("Location: index.php");
     exit();
 
-
+}
 
 ?>
 <?php include 'admin-session.php'; ?>
