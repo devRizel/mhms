@@ -1,10 +1,22 @@
+<?php
+session_start();
+
+if (isset($_SESSION['admin_id'], $_SESSION['admin_email'], $_SESSION['admin_name'])) {
+    if ($_SESSION['admin_id'] && $_SESSION['admin_email'] && $_SESSION['admin_name']) {
+        header("Location: dashboard.php");
+        exit();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Madridejos HMS - Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
         .brand-circle {
             position: absolute;
@@ -59,19 +71,17 @@
         <!-- Header -->
         <div class="py-6 px-8 text-center">
           
-            <img src="assets/images/logo.png" class="h-16 w-16 rounded-lg ms-auto mx-auto" alt="">
+            <img src="../assets/images/logo.png" class="h-16 w-16 rounded-lg ms-auto mx-auto " alt="">
             <h1 class="text-2xl font-bold text-">Madridejos HMS</h1>
-            <p class="text--100 mt-1">Healthcare Management System</p>
+            <p class="text--100 mt-1">Admin Portal</p>
         </div>
         
         <!-- Login Form -->
         <div class="p-8">
-            <form action="admin/includes/patients-login.php" method="POST">
+            <form id="loginForm">
                 <div class="mb-6">
                     <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
-                    <input type="email" id="email" name="email" 
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" 
-                        placeholder="your@email.com" required>
+                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="your@email.com">
                 </div>
                 
                 <div class="mb-6 relative">
@@ -90,6 +100,8 @@
                     </div>
                 </div>
 
+
+
                 
                 <div class="flex items-center justify-between mb-6">
                     <div class="flex items-center">
@@ -97,71 +109,94 @@
                         <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
                     </div>
                     
-                    <a href="forgot.php" class="text-sm text-blue-600 hover:text-blue-800">Forgot password?</a>
+                    <a href="forgotpass.php" class="text-sm text-blue-600 hover:text-blue-800">Forgot password?</a>
                 </div>
                 
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200">
+                <button type="submit" class="w-full bg-blue-800 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200">
                     Sign In
                 </button>
             </form>
             
-            <div class="mt-6 text-center">
-                <p class="text-gray-600 text-sm">Don't have an account? 
-                    <a href="signup.php" class="text-blue-600 hover:text-blue-800 font-medium">Register here</a>
-                </p>
-            </div>
+          
         </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="absolute bottom-4 left-0 right-0 text-center text-gray-500 text-sm">
+        &copy; 2025 Madridejos Healthcare Management System
     </div>
 
 
-    
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- crud sweetalerts  this is included inside all the pages below uaing include-->
+<?php
+if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
+?>
 <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const signupStatus = urlParams.get('signup');
-    const errorStatus = urlParams.get('error');
+Swal.fire({
+    icon: "<?php echo $_SESSION['status_icon']; ?>",
+    title: "<?php echo $_SESSION['status']; ?>",
+    confirmButtonText: "Ok"
+});
+</script>
+<?php
+unset($_SESSION['status']);
+unset($_SESSION['status_icon']);
+}
+?>
 
-    if (signupStatus === 'success') {
+<!-- end  -->
+  
+    <!-- AJAX REQUEST -->
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent page reload
+
+    var email = document.getElementById('email').value.trim();
+    var password = document.getElementById('password').value.trim();
+
+    if (email === '' || password === '') {
         Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: 'Your account has been created successfully. Please log in.',
+            icon: 'warning',
+            title: 'Missing Fields',
+            text: 'Please enter both email and password.'
         });
-    } else if (errorStatus === 'empty_fields') {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Please fill in all fields.',
-        });
-    } else if (errorStatus === 'invalid_email') {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Username/Password Incorrect!',
-        });
-    } else if (errorStatus === 'email_not_found') {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Username/Password Incorrect!',
-        });
-    } else if (errorStatus === 'wrong_password') {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Username/Password Incorrect!',
-        });
-    } else if (errorStatus === 'connection_failed') {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Failed to connect to the database.',
-        });
+        return;
     }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'functions/login.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var response = xhr.responseText.trim();
+            if (response === 'success') {
+              
+                    window.location.href = 'dashboard.php';
+             
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: response
+                });
+            }
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Server Error',
+                text: 'Something went wrong. Please try again.'
+            });
+        }
+    };
+
+    xhr.send('email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password));
+});
+
 </script>
 
 
-<script>
+    <script>
 function togglePassword() {
     const passwordInput = document.getElementById('password');
     const eyeIcon = document.getElementById('eyeIcon');
@@ -181,10 +216,6 @@ function togglePassword() {
     }
 }
 </script>
-    
-    <!-- Footer -->
-    <div class="absolute bottom-4 left-0 right-0 text-center text-gray-500 text-sm">
-        &copy; 2025 Madridejos Healthcare Management System
-    </div>
+
 </body>
 </html>

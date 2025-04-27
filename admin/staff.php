@@ -277,25 +277,9 @@
             </form>
         </div>
     </div>
-</div>
 
-<script>
-    // Modal functions
-    function openAddStaffModal() {
-        document.getElementById('addStaffModal').classList.remove('hidden');
-    }
-    
-    function closeAddStaffModal() {
-        document.getElementById('addStaffModal').classList.add('hidden');
-    }
-    
-    function openEditStaffModal() {
-        document.getElementById('editStaffModal').classList.remove('hidden');
-    }
-    
-    function closeEditStaffModal() {
-        document.getElementById('editStaffModal').classList.add('hidden');
-    }
-</script>
 
+<!-- Your existing script include -->
 <script src="../assets/js/script.js"></script>
+</body>
+</html>

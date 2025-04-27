@@ -1,3 +1,16 @@
+<?php
+session_start(); // Start the session
+
+include_once "includes/checkloginstatus.php"; // This includes your login check logic
+
+// Check if the user has logged in, if not, redirect them to the login page
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: index.php");
+    exit();
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Madridejos HMS - Dashboard</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -43,7 +57,7 @@
     <!-- Sidebar -->
     <div class="sidebar fixed inset-y-0 left-0 bg-white shadow-lg w-64 z-10 dark:bg-gray-800">
         <!-- Logo -->
-        <div class="flex items-center justify-center py-6 px-4 border-b dark:border-gray-700">
+        <div class="flex items-center justify-center py-4 px-4 border-b dark:border-gray-700">
             <img src="../assets/images/logo.png" class="h-10 w-10 rounded-lg" alt="">
             <h1 class="text-xl font-bold text-gray-800 dark:text-white ml-3">MHMS</h1>
         </div>
@@ -105,6 +119,16 @@
             </svg>
             <span class="nav-text ml-3">Staff</span>
         </a>
+
+        <!-- admins  -->
+        <a href="admin.php"
+        class="flex items-center py-3 px-4 rounded-lg font-medium mt-1
+        <?= $currentPage == 'admin.php' ? 'bg-blue-50 text-blue-600 dark:bg-gray-700 dark:text-blue-400' : 'text-gray-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700' ?>">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+            </svg>
+            <span class="nav-text ml-3">Manage Admin</span>
+        </a>
     </div>
 
     <!-- Settings section -->
@@ -144,10 +168,10 @@
         </div>
     </div>
 
-    <div class="main-content ml-64 p-6">
+    <div class="main-content ml-64 p-6  ">
         <!-- Top Bar -->
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-            <h2 class="text-2xl font-italic text-gray-800 dark:text-white">Dashboard Overview</h2>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center w-full p-2 mb-8 gap-4 py-2 top-5  border-b border-gray-200 dark:border-gray-700 top-2 bg-white dark:bg-gray-800 rounded-xl sticky pl-2 pr-5">
+            <h2 class="text-2xl font-italic text-gray-800 dark:text-white"> Howdy <?php echo $_SESSION['admin_name']; ?>!</h2>
             
             <div class="flex items-center space-x-4 w-full md:w-auto">
                 <!-- Dark Mode Toggle -->
@@ -160,8 +184,6 @@
                     </svg>
                 </button>
                 
-              
-                
                 <div class="flex items-center space-x-2">
                     <div class="relative">
                         <button class="p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">
@@ -173,9 +195,13 @@
                     </div>
                     
                     <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="h-8 w-8 rounded-full" alt="User">
-                        <span class="ml-2 text-sm font-medium dark:text-white">Dr. Sarah</span>
-                    </div>
+                <?php if(isset($_SESSION['admin_avatar']) && $_SESSION['admin_avatar'] != ''): ?>
+                    <img src="includes/<?php echo $_SESSION['admin_avatar']; ?>" class="h-8 w-8 rounded-full" alt="User">
+                <?php else: ?>
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="h-8 w-8 rounded-full" alt="User">
+                <?php endif; ?>
+                <span class="ml-2 text-sm font-medium dark:text-white"><?php echo $_SESSION['admin_name']; ?></span>
+            </div>
                 </div>
             </div>
         </div>

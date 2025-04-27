@@ -1,5 +1,6 @@
+
 <?php
-// Database connection settings
+// C:\xampp\htdocs\mhms\admin\includes\conn.php
 $host = 'localhost'; // Database host
 $dbname = 'mhms'; // Database name
 $username = 'root'; // Database username

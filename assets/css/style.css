@@ -114,8 +114,8 @@ background: rgba(16, 185, 129, 0.12); /* More visible in dark mode */
 /* Responsive adjustments */
 @media (max-width: 1024px) {
 .brand-circle {
-width: 600px;  /* Increased from 400px */
-height: 600px; /* Increased from 400px */
+width: 800px;  /* Increased from 400px */
+height: 800px; /* Increased from 400px */
 }
 
 .brand-circle-top {
@@ -129,18 +129,18 @@ right: -300px; /* Adjusted */
 }
 
 .brand-accent {
-width: 300px;  /* Increased from 200px */
-height: 300px; /* Increased from 200px */
+width: 500px;  /* Increased from 200px */
+height: 500px; /* Increased from 200px */
 }
 
 .brand-accent-top {
-top: 150px; /* Adjusted */
-left: 150px; /* Adjusted */
+top: 250px; /* Adjusted */
+left: 250px; /* Adjusted */
 }
 
 .brand-accent-bottom {
-bottom: 150px; /* Adjusted */
-right: 150px; /* Adjusted */
+bottom: 250px; /* Adjusted */
+right: 250px; /* Adjusted */
 }
 }
 
@@ -182,4 +182,17 @@ right: 125px;
 .brand-circle, .brand-accent {
 opacity: 0.4; /* Still visible but not overwhelming */
 }
+}
+
+/* SWEE ALAERT STYLES */
+/* Ensure SweetAlert2 uses the correct theme based on dark mode */
+.swal2-popup {
+    background-color: var(--swal-bg, white);
+    color: var(--swal-text, black);
+}
+
+/* Dark mode styles */
+html.dark .swal2-popup {
+    background-color: #2d3748;
+    color: white;
 }

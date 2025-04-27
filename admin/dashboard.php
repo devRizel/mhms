@@ -1,68 +1,100 @@
 
+
+
 <?php include_once 'includes/sidebar.php'; ?>
-    
+    <h1> <span class="ml-2 text-4xl dark:text-white mb-4">Dashboard</span></h1>
         <!-- Stats Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white p-6 rounded-xl shadow border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Total Patients</p>
-                        <h3 class="text-2xl font-bold mt-1 dark:text-white">1,248</h3>
-                        <p class="text-sm text-green-500 mt-2">+12% from last month</p>
-                    </div>
-                    <div class="p-3 rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                    </div>
-                </div>
+     <!-- Stats Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 mt-5">
+    <!-- Total Patients Card -->
+    <div class="relative bg-white p-5 md:p-6 rounded-xl shadow-sm border border-gray-200 dark:bg-gray-800 dark:border-gray-700 overflow-hidden hover:shadow-md hover:scale-[1.02] transition-all duration-300">
+        <div class="absolute inset-0 opacity-7 bg-gradient-to-br from-blue-50 to-transparent dark:from-blue-900/10 dark:to-transparent"></div>
+        <div class="relative flex items-center justify-between">
+            <div class="space-y-1">
+                <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-medium">Total Patients</p>
+                <h3 class="text-xl md:text-2xl font-bold dark:text-white">1,248</h3>
+                <p class="text-xs md:text-sm text-green-600 dark:text-green-400 font-medium flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                    </svg>
+                    +12% from last month
+                </p>
             </div>
-            
-            <div class="bg-white p-6 rounded-xl shadow border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Today's Appointments</p>
-                        <h3 class="text-2xl font-bold mt-1 dark:text-white">24</h3>
-                        <p class="text-sm text-green-500 mt-2">+2 from yesterday</p>
-                    </div>
-                    <div class="p-3 rounded-lg bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-white p-6 rounded-xl shadow border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Pending Tasks</p>
-                        <h3 class="text-2xl font-bold mt-1 dark:text-white">8</h3>
-                        <p class="text-sm text-red-500 mt-2">-3 from yesterday</p>
-                    </div>
-                    <div class="p-3 rounded-lg bg-yellow-50 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-white p-6 rounded-xl shadow border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Available Staff</p>
-                        <h3 class="text-2xl font-bold mt-1 dark:text-white">14</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">3 on leave</p>
-                    </div>
-                    <div class="p-3 rounded-lg bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                    </div>
-                </div>
+            <div class="p-3 rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
             </div>
         </div>
+    </div>
+
+    <!-- Today's Appointments Card -->
+    <div class="relative bg-white p-5 md:p-6 rounded-xl shadow-sm border border-gray-200 dark:bg-gray-800 dark:border-gray-700 overflow-hidden hover:shadow-md hover:scale-[1.02] transition-all duration-300">
+        <div class="absolute inset-0 opacity-7 bg-gradient-to-br from-green-50 to-transparent dark:from-green-900/10 dark:to-transparent"></div>
+        <div class="relative flex items-center justify-between">
+            <div class="space-y-1">
+                <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-medium">Today's Appointments</p>
+                <h3 class="text-xl md:text-2xl font-bold dark:text-white">24</h3>
+                <p class="text-xs md:text-sm text-green-600 dark:text-green-400 font-medium flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                    </svg>
+                    +2 from yesterday
+                </p>
+            </div>
+            <div class="p-3 rounded-lg bg-green-100 text-green-600 dark:bg-green-900/40 dark:text-green-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Tasks Card -->
+    <div class="relative bg-white p-5 md:p-6 rounded-xl shadow-sm border border-gray-200 dark:bg-gray-800 dark:border-gray-700 overflow-hidden hover:shadow-md hover:scale-[1.02] transition-all duration-300">
+        <div class="absolute inset-0 opacity-7 bg-gradient-to-br from-yellow-50 to-transparent dark:from-yellow-900/10 dark:to-transparent"></div>
+        <div class="relative flex items-center justify-between">
+            <div class="space-y-1">
+                <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-medium">Pending Tasks</p>
+                <h3 class="text-xl md:text-2xl font-bold dark:text-white">8</h3>
+                <p class="text-xs md:text-sm text-red-600 dark:text-red-400 font-medium flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                    -3 from yesterday
+                </p>
+            </div>
+            <div class="p-3 rounded-lg bg-yellow-100 text-yellow-600 dark:bg-yellow-900/40 dark:text-yellow-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Available Staff Card -->
+    <div class="relative bg-white p-5 md:p-6 rounded-xl shadow-sm border border-gray-200 dark:bg-gray-800 dark:border-gray-700 overflow-hidden hover:shadow-md hover:scale-[1.02] transition-all duration-300">
+        <div class="absolute inset-0 opacity-7 bg-gradient-to-br from-purple-50 to-transparent dark:from-purple-900/10 dark:to-transparent"></div>
+        <div class="relative flex items-center justify-between">
+            <div class="space-y-1">
+                <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-medium">Available Staff</p>
+                <h3 class="text-xl md:text-2xl font-bold dark:text-white">14</h3>
+                <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 font-medium flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    3 on leave
+                </p>
+            </div>
+            <div class="p-3 rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-900/40 dark:text-purple-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
         
         <!-- Upcoming Appointments -->
         <div class="bg-white p-6 rounded-xl shadow border border-gray-100 mb-8 dark:bg-gray-800 dark:border-gray-700">
@@ -218,7 +250,24 @@
     </div>
 
     </div>
-<!-- Add this after your existing content but before the script tag -->
+    <?php
+if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
+?>
+<script>
+   
+    Swal.fire({
+        icon: "<?php echo $_SESSION['status_icon']; ?>",
+        title: "<?php echo $_SESSION['status']; ?>",
+        confirmButtonText: "Ok",
+      
+    });
+</script>
+<?php
+unset($_SESSION['status']);
+unset($_SESSION['status_icon']);
+}
+?>
+
 
 
 <!-- Add this script right before your existing script.js include -->

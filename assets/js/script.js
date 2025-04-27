@@ -58,3 +58,26 @@ document.querySelector('.sidebar').classList.toggle('sidebar-open');
 
   window.addEventListener('resize', adjustCircles);
   adjustCircles(); 
+
+
+     // Modal functions
+     function openAddStaffModal() {
+        document.getElementById('addStaffModal').classList.remove('hidden');
+    }
+    
+         // Modal functions
+         function openAddadminfModal() {
+            document.getElementById('openAddadminfModal').classList.remove('hidden');
+        }openAddadminfModal
+    
+    function closeAddStaffModal() {
+        document.getElementById('addStaffModal').classList.add('hidden');
+    }
+    
+    function openEditStaffModal() {
+        document.getElementById('editStaffModal').classList.remove('hidden');
+    }
+    
+    function closeEditStaffModal() {
+        document.getElementById('editStaffModal').classList.add('hidden');
+    }

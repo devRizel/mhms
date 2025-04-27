@@ -260,4 +260,7 @@
         </div>
     </div>
 
+<!-- Your existing script include -->
 <script src="../assets/js/script.js"></script>
+</body>
+</html>
