@@ -66,33 +66,31 @@
         
         <!-- Login Form -->
         <div class="p-8">
-            <form>
-                <div class="mb-6">
-                    <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
-                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="your@email.com">
-                </div>
-                
-                <div class="mb-6">
-                    <label for="password" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
-                    <input type="password" id="password" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="••••••••">
-                </div>
-                
-                <div class="flex items-center justify-between mb-6">
-                    <div class="flex items-center">
-                        <input id="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                        <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
-                    </div>
-                    
-                    <a href="forgotpass.html" class="text-sm text-blue-600 hover:text-blue-800">Forgot password?</a>
-                </div>
-                
-                <button type="submit" class="w-full bg-blue-800 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200" 
-                onclick=
-                    "window.location.href='dashboard.php'">
-                    Sign In
-                </button>
-            </form>
-            
+        <form action="includes/admin-login.php" method="POST">
+    <div class="mb-6">
+        <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+        <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="your@email.com">
+    </div>
+    
+    <div class="mb-6">
+        <label for="password" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
+        <input type="password" id="password" name="password" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="••••••••">
+    </div>
+    
+    <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center">
+            <input id="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+            <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+        </div>
+        
+        <a href="forgotpass.html" class="text-sm text-blue-600 hover:text-blue-800">Forgot password?</a>
+    </div>
+    
+    <button type="submit" class="w-full bg-blue-800 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200">
+        Sign In
+    </button>
+</form>
+
           
         </div>
     </div>

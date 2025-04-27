@@ -1,3 +1,4 @@
+<?php include 'admin-session.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,13 +98,13 @@
         </a>
 
         <!-- Staff -->
-        <a href="staff.php"
+        <a href="admin.php"
         class="flex items-center py-3 px-4 rounded-lg font-medium mt-1
-        <?= $currentPage == 'staff.php' ? 'bg-blue-50 text-blue-600 dark:bg-gray-700 dark:text-blue-400' : 'text-gray-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700' ?>">
+        <?= $currentPage == 'admin.php' ? 'bg-blue-50 text-blue-600 dark:bg-gray-700 dark:text-blue-400' : 'text-gray-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700' ?>">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
             </svg>
-            <span class="nav-text ml-3">Staff</span>
+            <span class="nav-text ml-3">Add New</span>
         </a>
     </div>
 
@@ -122,9 +123,9 @@
         </a>
 
         <!-- Logout -->
-        <a href="logout.php"
+        <a href="includes/admin-logout.php"
         class="flex items-center py-3 px-4 rounded-lg font-medium mt-1
-        <?= $currentPage == 'logout.php' ? 'bg-blue-50 text-blue-600 dark:bg-gray-700 dark:text-blue-400' : 'text-gray-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700' ?>">
+        <?= $currentPage == 'includes/admin-logout.php' ? 'bg-blue-50 text-blue-600 dark:bg-gray-700 dark:text-blue-400' : 'text-gray-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700' ?>">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
             </svg>
