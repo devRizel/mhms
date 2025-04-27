@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2025 at 05:54 AM
+-- Generation Time: Apr 27, 2025 at 07:33 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -33,8 +33,19 @@ CREATE TABLE `admin` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `verification` varchar(15) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL
+  `status` varchar(255) DEFAULT NULL,
+  `phone` varchar(15) NOT NULL,
+  `rmb` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `fullname`, `email`, `password`, `verification`, `status`, `phone`, `rmb`) VALUES
+(7, 'Rizel Mulle Bracero', 'rizelbrace4421awdwa22@gmail.com', '$2y$10$5AmAcVChNO7HK8d.dPJYs.2dX7QRBiHB9uxtGc/XoVtfVfrtioqDi', NULL, 'Administrator', '2147483647', NULL),
+(8, 'Rizel Mulle Bracero', 'rizelbrace442121awdwa22@gmail.com', '$2y$10$uwFhdhadRI3iA3ft.rn/EOHwEwymrDpfUNLg8BN/9BLLKq4/kcNJO', NULL, 'Administrator', '09512014897', NULL),
+(9, 'Rizel Mulle Bracero', 'rizel@gmail.com', '$2y$10$RKTL4H.WAmm8L5MTDyUdTuafI8cPLtW5rfKQ9kqKVdWePgId2.mxe', NULL, 'Administrator', '09512014897', NULL);
 
 -- --------------------------------------------------------
 
@@ -120,7 +131,7 @@ ALTER TABLE `patients`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `appointments`
