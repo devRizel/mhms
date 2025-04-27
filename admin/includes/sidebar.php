@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php
 session_start(); // Start the session
 
@@ -12,7 +12,6 @@ if (!isset($_SESSION['admin_id'])) {
 
 
 ?>
-=======
 <?php include 'admin-session.php'; ?>
 
 <!DOCTYPE html>
