@@ -6,14 +6,59 @@
         <div class="profile-header rounded-xl p-6 mb-8">
             <div class="flex flex-col md:flex-row items-start md:items-center">
                 <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
-                    <div class="relative">
-                        <img src="admin/includes/images/patients.png" class="h-24 w-24 rounded-full border-4 border-white shadow-md" alt="Profile">
-                        <button class="absolute bottom-0 right-0 bg-white p-2 rounded-full shadow-md text-blue-600 hover:bg-blue-50">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                            </svg>
-                        </button>
-                    </div>
+                   <!-- Profile Picture Upload Form -->
+
+                   <form id="profileImageForm" action="admin/includes/patients-profile.php" method="POST" enctype="multipart/form-data">
+    <div class="relative">
+        <!-- Display the profile image from the database or default image -->
+
+        <img id="profileImage" 
+     src="admin/includes/uploads/<?php echo ($_SESSION['profile_image'] ? $_SESSION['profile_image'] : 'patients.png'); ?>" 
+     class="h-24 w-24 rounded-full border-4 border-white shadow-md" 
+     alt="Profile">
+
+
+        <!-- Hidden File Input -->
+        <input type="file" id="imageUpload" name="profile_image" accept="image/*" class="hidden">
+
+        <!-- Button to Trigger File Input -->
+        <button type="button" id="editImageButton" class="absolute bottom-0 right-0 bg-white p-2 rounded-full shadow-md text-blue-600 hover:bg-blue-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Upload Button (Hidden initially, show after selecting file) -->
+    <button type="submit" id="uploadButton" class="mt-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 hidden">
+        Upload Image
+    </button>
+</form>
+
+<script>
+// When clicking the edit button, trigger file input
+document.getElementById('editImageButton').addEventListener('click', function() {
+    document.getElementById('imageUpload').click();
+});
+
+// When selecting a file, show preview and show upload button
+document.getElementById('imageUpload').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('profileImage').src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+
+        // Show the upload button after selecting the file
+        document.getElementById('uploadButton').classList.remove('hidden');
+    }
+});
+</script>
+
+
+
                 </div>
                 <div class="flex-grow">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between">
@@ -29,40 +74,42 @@
                                 <span class="text-gray-600">Madridejos, Cebu, Philippines</span>
                             </div>
                         </div>
-                        <div class="mt-4 md:mt-0">
-                            <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 mr-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                                </svg>
-                                Message
-                            </button>
-                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                                </svg>
-                                Edit Profile
-                            </button>
-                        </div>
                     </div>
                     
                     <!-- Stats -->
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                        <?php
+                            if (isset($_SESSION['birthdate'])) {
+                            $birthdate = $_SESSION['birthdate'];
+                            $birthDateObj = new DateTime($birthdate);
+                            $today = new DateTime();
+                            $age = $birthDateObj->diff($today)->y;
+                        } else {
+                            $age = "N/A";
+                        }
+                        ?>
                         <div class="stat-card bg-white p-4 rounded-lg text-center">
                             <p class="text-sm text-gray-500">Age</p>
-                            <p class="text-xl font-bold text-gray-800">32</p>
+                            <p class="text-xl font-bold text-gray-800"><?php echo $age; ?></p>
                         </div>
                         <div class="stat-card bg-white p-4 rounded-lg text-center">
                             <p class="text-sm text-gray-500">Blood Type</p>
-                            <p class="text-xl font-bold text-gray-800">O+</p>
+                            <p class="text-xl font-bold text-gray-800">
+                                <?php echo !empty($_SESSION['btype']) ? strtoupper($_SESSION['btype']) : 'N/A'; ?>
+                            </p>
                         </div>
                         <div class="stat-card bg-white p-4 rounded-lg text-center">
-                            <p class="text-sm text-gray-500">Last Visit</p>
-                            <p class="text-xl font-bold text-gray-800">May 15</p>
+                            <p class="text-sm text-gray-500">Phone Number</p>
+                            <p class="text-xl font-bold text-gray-800">
+                            <?php echo htmlspecialchars($_SESSION['phone']); ?>
+                            </p>
                         </div>
                         <div class="stat-card bg-white p-4 rounded-lg text-center">
                             <p class="text-sm text-gray-500">Member Since</p>
-                            <p class="text-xl font-bold text-gray-800">2018</p>
+                            <p class="text-xl font-bold text-gray-800">
+                            <?php echo date("F j, Y", 
+                            strtotime($_SESSION['created_at'])); ?>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -73,10 +120,6 @@
         <div class="border-b border-gray-200 mb-8">
             <nav class="flex space-x-8">
                 <a href="#" data-tab="overview" class="profile-tab active py-4 px-1 text-sm font-medium">Overview</a>
-                <a href="#" data-tab="medical-records" class="profile-tab py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700">Medical Records</a>
-                <a href="#" data-tab="appointments" class="profile-tab py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700">Appointments</a>
-                <a href="#" data-tab="prescriptions" class="profile-tab py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700">Prescriptions</a>
-                <a href="#" data-tab="billing" class="profile-tab py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700">Billing</a>
                 <a href="#" data-tab="settings" class="profile-tab py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700">Settings</a>
             </nav>
         </div>
@@ -266,68 +309,6 @@
             </div>
         </div>
 
-        <!-- Appointments Content -->
-        <div id="appointments-content" class="tab-content hidden">
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-6">Appointments</h2>
-                <div class="space-y-6">
-                    <div class="border border-gray-200 rounded-lg p-4">
-                        <h3 class="font-medium text-gray-800 mb-2">Upcoming Appointments</h3>
-                        <p class="text-sm text-gray-600">View and manage your scheduled visits</p>
-                    </div>
-                    <div class="border border-gray-200 rounded-lg p-4">
-                        <h3 class="font-medium text-gray-800 mb-2">Past Appointments</h3>
-                        <p class="text-sm text-gray-600">Review your previous consultations</p>
-                    </div>
-                    <div class="border border-gray-200 rounded-lg p-4">
-                        <h3 class="font-medium text-gray-800 mb-2">Schedule New Appointment</h3>
-                        <p class="text-sm text-gray-600">Book with your healthcare provider</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Prescriptions Content -->
-        <div id="prescriptions-content" class="tab-content hidden">
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-6">Prescriptions</h2>
-                <div class="space-y-6">
-                    <div class="border border-gray-200 rounded-lg p-4">
-                        <h3 class="font-medium text-gray-800 mb-2">Current Medications</h3>
-                        <p class="text-sm text-gray-600">View your active prescriptions</p>
-                    </div>
-                    <div class="border border-gray-200 rounded-lg p-4">
-                        <h3 class="font-medium text-gray-800 mb-2">Medication History</h3>
-                        <p class="text-sm text-gray-600">Review your past prescribed medications</p>
-                    </div>
-                    <div class="border border-gray-200 rounded-lg p-4">
-                        <h3 class="font-medium text-gray-800 mb-2">Request Refill</h3>
-                        <p class="text-sm text-gray-600">Request renewal for your prescriptions</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Billing Content -->
-        <div id="billing-content" class="tab-content hidden">
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-6">Billing</h2>
-                <div class="space-y-6">
-                    <div class="border border-gray-200 rounded-lg p-4">
-                        <h3 class="font-medium text-gray-800 mb-2">Payment History</h3>
-                        <p class="text-sm text-gray-600">View your completed transactions</p>
-                    </div>
-                    <div class="border border-gray-200 rounded-lg p-4">
-                        <h3 class="font-medium text-gray-800 mb-2">Outstanding Balances</h3>
-                        <p class="text-sm text-gray-600">Check your unpaid bills</p>
-                    </div>
-                    <div class="border border-gray-200 rounded-lg p-4">
-                        <h3 class="font-medium text-gray-800 mb-2">Payment Methods</h3>
-                        <p class="text-sm text-gray-600">Manage your payment options</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Settings Content -->
         <div id="settings-content" class="tab-content hidden">

@@ -90,16 +90,98 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
         }
+
+                /* Enhanced circle shapes */
+                .brand-circle-xl {
+            position: fixed;
+            width: 1000px;
+            height: 1000px;
+            background: rgba(59, 130, 246, 0.08);
+            border-radius: 50%;
+            clip-path: circle(50% at 50% 50%);
+            z-index: -1;
+        }
+        
+        .brand-circle-xl-right {
+            top: -500px;
+            right: -400px;
+        }
+        
+        .brand-circle-lg {
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            background: rgba(16, 185, 129, 0.08);
+            border-radius: 50%;
+            clip-path: circle(50% at 50% 50%);
+            z-index: -1;
+        }
+        
+        .brand-circle-lg-left {
+            bottom: -400px;
+            left: -300px;
+        }
+        
+        .brand-circle-md {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: rgba(99, 102, 241, 0.08);
+            border-radius: 50%;
+            clip-path: circle(50% at 50% 50%);
+            z-index: -1;
+        }
+        
+        .brand-circle-md-center {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .brand-circle-sm {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: rgba(236, 72, 153, 0.08);
+            border-radius: 50%;
+            clip-path: circle(50% at 50% 50%);
+            z-index: -1;
+        }
+        
+        .brand-circle-sm-top {
+            top: 100px;
+            right: 100px;
+        }
+        
+        /* Profile dropdown */
+        .profile-dropdown {
+            display: none;
+        }
+        
+        .profile-container:hover .profile-dropdown {
+            display: block;
+        }
+        
+        /* Card shadow enhancement */
+        .enhanced-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+        
+        .enhanced-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen relative overflow-x-hidden">
+    
     <!-- Circle Shapes -->
     <div class="brand-circle-xl brand-circle-xl-left"></div>
     <div class="brand-circle-lg brand-circle-lg-right"></div>
     <div class="brand-circle-sm brand-circle-sm-center"></div>
-    
-   
-    
+
+
 
         <!-- Dashboard Layout -->
         <div class="container mx-auto px-4 py-8">
@@ -147,10 +229,8 @@
     </div>
 </div>
             </div>
-        </div></script>
-
-
-
+        </div>
+   
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Get all tab elements
