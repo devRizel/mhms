@@ -8,13 +8,13 @@ include_once "includes/checkloginstatus.php"; // This includes your login check 
 if (!isset($_SESSION['admin_id'])) {
     header("Location: index.php");
     exit();
-}
+
 
 
 ?>
 =======
 <?php include 'admin-session.php'; ?>
->>>>>>> 81562b5b68c4a174416cfd9d5f03721db355a3ab
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
