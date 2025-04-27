@@ -496,6 +496,6 @@
         </div>
     </div>
 
-  
+    <?php include_once('chatbot.php'); ?>
 </body>
 </html>

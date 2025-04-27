@@ -379,3 +379,4 @@ document.getElementById('imageUpload').addEventListener('change', function(event
             </div>
         </div>
     </div>
+    <?php include_once('chatbot.php'); ?>

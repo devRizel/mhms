@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 session_start();
 
@@ -9,14 +10,21 @@ if (isset($_SESSION['admin_id'], $_SESSION['admin_email'], $_SESSION['admin_name
 }
 ?>
 
+=======
+>>>>>>> 81562b5b68c4a174416cfd9d5f03721db355a3ab
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Madridejos HMS - Login</title>
     <script src="https://cdn.tailwindcss.com"></script><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+=======
+    <title>Madridejos HMS - Forgot Password</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+>>>>>>> 81562b5b68c4a174416cfd9d5f03721db355a3ab
     <style>
         .brand-circle {
             position: absolute;
@@ -66,6 +74,7 @@ if (isset($_SESSION['admin_id'], $_SESSION['admin_email'], $_SESSION['admin_name
     <div class="brand-accent brand-accent-top"></div>
     <div class="brand-accent brand-accent-bottom"></div>
     
+<<<<<<< HEAD
     <!-- Login Card -->
     <div class="w-full max-w-md bg-white rounded-xl shadow-lg border-gray-100 border-top-2 overflow-hidden">
         <!-- Header -->
@@ -118,11 +127,88 @@ if (isset($_SESSION['admin_id'], $_SESSION['admin_email'], $_SESSION['admin_name
             </form>
             
           
+=======
+    <!-- Password Reset Card -->
+    <div class="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- Header -->
+        <div class="py-6 px-8 text-center">
+            <div class="flex justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-800">Reset Your Password</h1>
+            <p class="text-gray-500 mt-2">Enter your email to receive a reset link</p>
+        </div>
+        
+        <!-- Password Reset Form -->
+        <div class="p-8">
+<<<<<<<< HEAD:admin/forgotpass.php
+            <form>
+                <div class="mb-6">
+                    <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="your@email.com" required>
+                </div>
+                
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    Send Reset Link
+                </button>
+            </form>
+            
+            <div class="mt-6 text-center">
+                <p class="text-gray-600 text-sm">Remember your password? 
+                    <a href="login.html" class="text-blue-600 hover:text-blue-800 font-medium">Sign in here</a>
+                </p>
+            </div>
+            
+            <!-- Success Message (hidden by default) -->
+            <div id="success-message" class="hidden mt-6 p-4 bg-green-50 text-green-700 rounded-lg">
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Password reset link sent! Check your email.</span>
+                </div>
+            </div>
+========
+        <form action="includes/admin-login.php" method="POST">
+    <div class="mb-6">
+        <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+        <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="your@email.com">
+    </div>
+    
+    <div class="mb-6">
+        <label for="password" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
+        <input type="password" id="password" name="password" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="••••••••">
+    </div>
+    
+    <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center">
+            <input id="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+            <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+        </div>
+        
+        <a href="forgotpass.html" class="text-sm text-blue-600 hover:text-blue-800">Forgot password?</a>
+    </div>
+    
+    <button type="submit" class="w-full bg-blue-800 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200">
+        Sign In
+    </button>
+</form>
+
+          
+>>>>>>>> 81562b5b68c4a174416cfd9d5f03721db355a3ab:admin/index.php
+>>>>>>> 81562b5b68c4a174416cfd9d5f03721db355a3ab
         </div>
     </div>
     
     <!-- Footer -->
     <div class="absolute bottom-4 left-0 right-0 text-center text-gray-500 text-sm">
+<<<<<<< HEAD
         &copy; 2025 Madridejos Healthcare Management System
     </div>
 
@@ -217,5 +303,11 @@ function togglePassword() {
 }
 </script>
 
+=======
+        &copy; 2023 Madridejos Healthcare Management System
+    </div>
+
+ 
+>>>>>>> 81562b5b68c4a174416cfd9d5f03721db355a3ab
 </body>
 </html>
