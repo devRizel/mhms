@@ -313,6 +313,6 @@
         document.getElementById("appointmentModal").classList.add("hidden");
     });
 </script>
-
+<?php include_once('chatbot.php'); ?>
 </body>
 </html>

@@ -176,5 +176,6 @@
             </div>
         </div>
     </footer>
+    <?php include_once('chatbot.php'); ?>
 </body>
 </html>

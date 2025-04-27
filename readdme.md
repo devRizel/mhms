@@ -1,1 +1,0 @@
-walay tempalte ani sundan?
